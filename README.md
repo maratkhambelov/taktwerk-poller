@@ -28,78 +28,26 @@ yarn add taktwerk-poller
 ## Quick Example
 
 ```typescript
+
 import { queryPoller } from 'taktwerk-poller'
 
-// Two-stage polling strategy
-const rangeIntervals = [
-  { durationMs: 1_000, intervalMs: 300 },
-  { durationMs: 4_000, intervalMs: 1_000 },
-]
-
-// Simulated async query:
-// - returns undefined on the first two calls
-// - returns "DONE" on the third call
-let callCount = 0
-
-async function fetchQuery(): Promise<string | undefined> {
-  callCount += 1
-
-  if (callCount === 3) {
-    return 'DONE'
-  }
-
-  return undefined
+async function fetchQuery() {
+  // Simulate an async operation
+  return Math.random() > 0.8 ? 'OK' : undefined
 }
 
-// Interruption controller using Promise.withResolvers
-let interruptController = Promise.withResolvers<void>()
+const interrupt = Promise.withResolvers<void>()
 
-async function startMonitoring() {
-  console.log('Monitoring started...')
+const result = await queryPoller(fetchQuery, [
+    { durationMs: 2000, intervalMs: 250 },
+    { durationMs: 5000, intervalMs: 1000 },
+], interrupt.promise)
 
-  // reset before each run
-  interruptController = Promise.withResolvers<void>()
-
-  try {
-    const result = await queryPoller(
-      fetchQuery,
-      rangeIntervals,
-      interruptController.promise,
-    )
-
-    switch (result.status) {
-      case 'DONE':
-        console.log('Status: DONE')
-        console.log('Data:', result.data)
-        break
-
-      case 'TIMEOUT_EXPIRED':
-        console.log('Status: TIMEOUT_EXPIRED')
-        break
-
-      case 'INTERRUPTED':
-        console.log('Status: INTERRUPTED')
-        break
-    }
-  } catch (error) {
-    console.error('Unexpected error while monitoring:', error)
-  }
+const stop = () => {
+    interrupt.resolve()
 }
-
-// Can be triggered from UI / CLI / whatever
-function stopMonitoring() {
-  interruptController.resolve()
-}
-
-// Example usage:
-startMonitoring()
-
-// For demo purposes, interrupt after 2 seconds:
-setTimeout(() => {
-  console.log('Interrupting…')
-  stopMonitoring()
-}, 2000)
 ```
+
 
 ## How it works
 
