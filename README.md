@@ -1,4 +1,4 @@
-# query-poller
+# taktwerk-poller
 
 A lightweight and deterministic asynchronous polling module that supports multi-stage polling with different intervals and durations, optional interruption, and predictable typed result statuses.
 
@@ -116,7 +116,7 @@ Each interval stage defines:
 
 ```mermaid
 flowchart
-    A[resolveMonitoringQuery] -->|Poll query status repeatedly| B[resolveCycle]
+    A[queryPoller] -->|Poll query status repeatedly| B[resolveCycle]
 
     B --> C{Did fetchQuery return a result?}
     C -->|Yes| D[return status: DONE, data: T]
