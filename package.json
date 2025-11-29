@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/maratkhambelov/taktwerk-poller.git"
   },
+  "homepage": "https://github.com/maratkhambelov/taktwerk-poller#readme",
+  "bugs": {
+    "url": "https://github.com/maratkhambelov/taktwerk-poller/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -36,5 +40,10 @@
     "cycle",
     "interruptible poll"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }

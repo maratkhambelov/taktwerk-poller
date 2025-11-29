@@ -1,5 +1,8 @@
 # taktwerk-poller
 
+[![npm version](https://img.shields.io/npm/v/taktwerk-poller.svg)](https://www.npmjs.com/package/taktwerk-poller)
+
+
 A lightweight and deterministic asynchronous polling module that supports multi-stage polling with different intervals and durations, optional interruption, and predictable typed result statuses.
 
 ## Key Advantages
