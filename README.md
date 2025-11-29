@@ -13,6 +13,27 @@ A lightweight and deterministic asynchronous polling module that supports multi-
 - Fully typed result states for safe handling
 - Lightweight and dependency-free
 
+## Motivation
+
+The goal of this module is to provide a polling mechanism that is:
+
+- easy to test
+- simple to reason about
+- free from hidden side effects or implicit state
+- predictable in all exit conditions
+
+Most polling implementations suffer from tangled control flow, implicit retries, unclear interruption logic, or non-deterministic exit paths.
+This leads to code that is hard to debug, hard to test, and even harder to trust.
+
+To avoid this, taktwerk-poller is built around:
+
+- **functional programming principles**
+- **contract-based design** (explicit preconditions, postconditions, invariants)
+- **pure, composable primitives** (resolveCycle)
+- **clear and deterministic async control flow**
+
+The result is a minimal, auditable polling module that behaves exactly as it declares — nothing hidden, nothing surprising.
+
 ## 📦 Installation
 
 ```bash
