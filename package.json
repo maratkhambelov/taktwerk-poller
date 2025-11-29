@@ -1,0 +1,40 @@
+{
+  "name": "taktwerk-poller",
+  "version": "0.1.0",
+  "description": "Asynchronous interruptible multi-stage polling tool",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maratkhambelov/taktwerk-poller.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "clean": "rimraf dist",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.7.3",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "keywords": [
+    "polling",
+    "async",
+    "query",
+    "poll",
+    "monitoring",
+    "cycle",
+    "interruptible poll"
+  ],
+  "license": "MIT"
+}
