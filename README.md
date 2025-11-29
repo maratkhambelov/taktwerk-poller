@@ -16,19 +16,19 @@ A lightweight and deterministic asynchronous polling module that supports multi-
 ## 📦 Installation
 
 ```bash
-npm install tatwerk-poller
+npm install taktwerk-poller
 ```
 
 or using yarn:
 
 ```
-yarn add tatwerk-poller
+yarn add taktwerk-poller
 ```
 
 ## Quick Example
 
 ```typescript
-import { queryPoller } from 'tatwerk-poller'
+import { queryPoller } from 'taktwerk-poller'
 
 // Two-stage polling strategy
 const rangeIntervals = [
@@ -135,5 +135,4 @@ flowchart
 
     classDef finish fill: #f33,stroke:#333,stroke-width:2px;
     class D,I,K,H finish;
-
 ```
